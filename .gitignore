@@ -1,0 +1,5 @@
+Pipfile
+Pipfile.lock
+blog/__pycache__
+__pycache__/
+*.pyc
