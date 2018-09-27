@@ -20,4 +20,8 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^$', views.index),
+    path('register/', views.register, name='register'),
+    path('signin/', views.signin, name='signin'),
+    path('signout/', views.signout, name='signout'),
+
 ]
