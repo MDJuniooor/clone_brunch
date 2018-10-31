@@ -27,9 +27,14 @@ urlpatterns = [
     path('signout/', views.signout, name='signout'),
     path('write/', views.create_post, name='create_post'),
     path('mypost/', views.my_post, name='my_post'),
-    # re_path(r'^(?P<post_id>[1-9]|[1-9]|+)$', views.show_post, name='show_post'),
     path('<int:post_id>/', views.show_post, name='show_post'),
+    path('<int:post_id>/delete/', views.delete_post, name='delete_post'),
+    path('<int:post_id>/update/', views.update_post, name='update_post'),
+    path('posts/<user_name>/', views.list_post, name="list_post"),
+    path('subscribe/<author_name>/', views.subscribe, name='subscribe'),
+    path('following/<user_name>/',views.list_following, name='list_following'),
     path('summernote/', include('django_summernote.urls')),
+    path('search/', views.search_post, name='search_post')
 ]
 
 
