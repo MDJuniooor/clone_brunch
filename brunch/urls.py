@@ -34,7 +34,7 @@ urlpatterns = [
     path('subscribe/<author_name>/', views.subscribe, name='subscribe'),
     path('following/<user_name>/',views.list_following, name='list_following'),
     path('summernote/', include('django_summernote.urls')),
-    path('search/', views.search_post, name='search_post')
+    path('search/', views.search_post, name='search_post'),
 ]
 
 
