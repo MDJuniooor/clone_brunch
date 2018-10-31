@@ -10,7 +10,7 @@ class Post(models.Model):  # N은 외래키 필요
     sub_title = models.CharField(
         max_length=30, blank=True)  # blank는 빈 칸으로 제출 가능
     contents = models.TextField()
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):  # 클래스 만들고 object 호출할 때 써야하는 string 함수
         return self.title
@@ -47,10 +47,10 @@ class CustomUser(AbstractBaseUser):
         max_length=225,
         unique=True,
     )
-    name = models.name = models.CharField(max_length=15, unique=True)
+    name = models.CharField(max_length=15, unique=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    following = models.ManyToManyField('self', blank=True)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
