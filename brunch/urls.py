@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, re_path, include
+from django.urls import path, include
 from blog import views
 
 urlpatterns = [
@@ -34,10 +34,12 @@ urlpatterns = [
     path('subscribe/<author_name>/', views.subscribe, name='subscribe'),
     path('following/<user_name>/',views.list_following, name='list_following'),
     path('summernote/', include('django_summernote.urls')),
-    path('search/', views.search_post, name='search_post'),
+    path('search/', views.search_post, name='search_post')
 ]
 
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

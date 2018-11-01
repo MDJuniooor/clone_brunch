@@ -25,9 +25,9 @@
 
 {% block content %}
 <form class="mx-auto w-50 mt-5" action="{% url 'register' %}" method="post">
-        <!-- {% if error_msg %}
+        {% if error_msg %}
         <div class="alert alert-danger" role="alert">{{ error_msg }}</div>
-        {% endif %} -->
+        {% endif %}
     {% csrf_token %}
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>

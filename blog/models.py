@@ -80,7 +80,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete='CASCADE')
     writer = models.ForeignKey(CustomUser, on_delete='CASCADE')
     contents = models.TextField()
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):  # 클래스 만들고 object 호출할 때 써야하는 string 함수
         return self.contents

@@ -1,1 +1,0 @@
-web: gunicorn bruch.wsgi --log-file -

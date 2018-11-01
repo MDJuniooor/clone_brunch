@@ -9,9 +9,6 @@ name = "pypi"
 
 django = "*"
 django-summernote = "*"
-dj-database-url = "*"
-gunicorn = "*"
-whitenoise = "*"
 
 
 [dev-packages]

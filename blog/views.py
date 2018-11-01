@@ -1,11 +1,13 @@
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
 from .forms import PostForm, CustomUserForm
 from .models import CustomUser, Post, Comment
 
 
 def index(request):
+    print('인덱스입니당')
     return render(request, 'blog/index.html')
 
 
@@ -37,7 +39,7 @@ def signin(request):
         password = request.POST['password']
         user = authenticate(email=email, password=password)
         if user is not None:
-            login(request, user)
+            login(request, user)    
             return redirect('index')
         else:
             error_msg = '존재하지 않는 계정입니다.'
@@ -49,7 +51,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return render(request, 'blog/signout.html')
+    return redirect('index')
 
 
 def create_post(request):
@@ -107,6 +109,7 @@ def update_post(request, post_id):
     return render(request, 'blog/update_post.html', {'form': form})
 
 
+@login_required
 def subscribe(request, author_name):
     if not request.user.is_authenticated:
         return redirect('index')
@@ -114,6 +117,7 @@ def subscribe(request, author_name):
     request.user.following.add(author)
     return redirect('index')
 
+@login_required
 def list_following(request, user_name):
     user_obj = CustomUser.objects.get(name=user_name)
     following = list(user_obj.following.all())
