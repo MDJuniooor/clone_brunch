@@ -1,1 +1,1 @@
-web: gunicorn brunch.wsgi
+web: gunicorn brunch.wsgi:application
